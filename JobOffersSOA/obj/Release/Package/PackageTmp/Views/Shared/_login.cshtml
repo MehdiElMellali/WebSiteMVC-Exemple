@@ -1,0 +1,53 @@
+﻿@using Microsoft.AspNet.Identity
+@using JobOffersSOA.Models
+
+
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("Logoff", "Account", FormMethod.Post, new { id = "logoff" }))
+    {
+        @*
+        <ul class="nav navbar-nav navbar-right">
+            <li>@Html.ActionLink("Welcome : "+User.Identity.GetUserName(),"Index","Manage")</li>
+            <li><a href="javascript:document.getElementById('logoff').submit()"><span class="glyphicon glyphicon-logout-in"></span> logout</a></li>
+        </ul>*@
+
+            var db = new ApplicationDbContext();
+            var UserId = User.Identity.GetUserId();
+            var CurrentUser = db.Users.Where(a => a.Id == UserId).SingleOrDefault();
+           // var typeUser
+            @Html.AntiForgeryToken()
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    Welcome : @CurrentUser.UserName
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    @if(CurrentUser.UserType == "Publishers")
+                    {
+                    <li><a href="~/Home/GetJobByPublisher">Job that you posted</a></li>
+                    <li><a href="~/jobs/Create">Add Job</a></li>
+                    }
+                    else
+                    {
+                    <li><a href="~/Home/GetJobByUser">Job that you have submitted</a></li>
+                    }
+                    <li><a href="~/Account/EditProfile">Edit your profil</a></li>
+                    <li><a href="javascript:document.getElementById('logoff').submit()"><span class="glyphicon glyphicon-logout-in"></span> logout</a></li>
+
+                </ul>
+            </li>
+        </ul>
+
+    }
+
+
+}
+else
+{
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="~/Account/Register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="~/Account/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>
+            }

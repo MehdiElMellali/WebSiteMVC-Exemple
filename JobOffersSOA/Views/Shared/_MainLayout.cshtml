@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="~/Content/Style.css" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar navbar-inverse ">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">WebSiteName</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">Page 1</a></li>
+                <li><a href="#">Page 2</a></li>
+                <li>
+                  @using (Html.BeginForm("Search", "Home", FormMethod.Post))    
+                  { 
+                <input type="text" class="form-control" placeholder="search..." style="margin-top: 5px !important;" name="searchName"/>
+                        }
+                        </li>
+            </ul>
+            @Html.Partial("_login")
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+
+        @RenderBody()
+        </div>
+    </div>
+    <!--Footer-->
+    <footer>
+        <div class="footer" id="footer">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-xs-12">
+                        <span class="logo">LOGO</span>
+                    </div>
+                    <div class="col-lg-3 col-xs-12">
+                        <h3>MENU</h3>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Board of Directors</a></li>
+                            <li><a href="#">Mission-Vision</a></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-xs-12">
+                        <h3>CATEGORIES</h3>
+                        <ul>
+                            <li><a href="#">Photo Gallery</a></li>
+                            <li><a href="#">Video Gallery</a></li>
+                            <li><a href="#">News</a></li>
+                            <li><a href="#">Announcement</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-xs-12">
+                        <h3>CONTACT</h3>
+                        <ul>
+                            <li> <a href="#">Address</a> </li>
+                            <li> <a href="#">Phone</a> </li>
+                            <li> <a href="#">Fax</a> </li>
+                            <li> <a href="#">E-Mail</a> </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="footer-bottom">
+        <p>Copyright © 2017. All right reserved.</p>
+    </div>
+    <!--/.Footer-->
+
+    <script src="~/scripts/jquery.js"></script>
+    <script src="~/scripts/bootstrap.min.js"></script>
+    @RenderSection("script", required: false)
+    <script>
+    $(document).ready(function () {
+        $('[id^=detail-]').hide();
+        $('.toggle').click(function () {
+            $input = $(this);
+            $target = $('#' + $input.attr('data-toggle'));
+            $target.slideToggle();
+        });
+    });
+    </script>
+</body>
+</html>

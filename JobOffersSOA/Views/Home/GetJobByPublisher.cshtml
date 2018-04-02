@@ -1,0 +1,36 @@
+﻿@model IEnumerable<JobOffersSOA.Models.JobViewModel>
+
+
+@foreach (var gr in Model)
+{
+   <h3>@gr.TitleJob</h3>
+<table class="table table-hover table-bordered">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+           Message
+        </th>
+        <th>
+            Date
+        </th>
+    </tr>
+
+@foreach (var item in gr.Items)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.user.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Message)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.applayDate)
+        </td>
+    </tr>
+}
+
+</table>
+}

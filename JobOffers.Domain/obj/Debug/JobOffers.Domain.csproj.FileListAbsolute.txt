@@ -1,0 +1,4 @@
+C:\Users\EL MEHDI\documents\visual studio 2015\Projects\JobOffersSOA\JobOffers.Domain\bin\Debug\JobOffers.Domain.dll
+C:\Users\EL MEHDI\documents\visual studio 2015\Projects\JobOffersSOA\JobOffers.Domain\bin\Debug\JobOffers.Domain.pdb
+C:\Users\EL MEHDI\documents\visual studio 2015\Projects\JobOffersSOA\JobOffers.Domain\obj\Debug\JobOffers.Domain.dll
+C:\Users\EL MEHDI\documents\visual studio 2015\Projects\JobOffersSOA\JobOffers.Domain\obj\Debug\JobOffers.Domain.pdb
